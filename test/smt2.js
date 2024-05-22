@@ -2,14 +2,15 @@
 
 const child_process = require("child_process");
 const path = require("path");
-const { testCVC4, testZ3 } = require("./testUtils");
+const { testCVC5, testZ3 } = require("./testUtils");
 
-describe("running CVC4", function() {
+describe("running CVC5", function() {
   context("on common.smt2", function() {
-    const cvc4Path = testCVC4();
+    const cvc5Path = testCVC5();
     it("should terminate with no errors", function(done) {
+      const preludePath = path.resolve(__dirname, "../lib/smt2/cvc5/prelude.smt2");
       const filePath = path.resolve(__dirname, "../lib/smt2/common.smt2");
-      child_process.execFile(cvc4Path, ["--lang=smt2", "--strings-exp", "--incremental", filePath], done);
+      child_process.execFile(cvc5Path, ["--lang=smt2", "--strings-exp", "--incremental", filePath], done);
     });
   });
 });
