@@ -8,3 +8,4 @@ data.dzn
 model.fzn
 model.mzn
 node_modules
+PCs_*.smt2
